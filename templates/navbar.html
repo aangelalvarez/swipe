@@ -1,0 +1,14 @@
+<a href="/">
+    <h1>SWIPE</h1>
+</a>
+
+<form method="GET" action="{% url 'home' %}">
+    <input type="text" name="q" placeholder="search rooms"/>
+</form>
+
+{% if request.user.is_authenticated %}
+<p>{{request.user.username}}</p>
+<a href="{% url 'logout' %}">Log Out</a>
+{% else %}
+<a href="{% url 'login' %}">Log In</a>
+{% endif %}

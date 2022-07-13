@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div>
+    <form method="POST" action="">
+        {% csrf_token %} <!-- this protects us from malicious code -->
+        {{form.as_p}} <!-- pass in our form from views.py and forms.py -->
+        <input type="submit" value="Submit"/>
+    </form>
+</div>
+
+{% endblock content %}

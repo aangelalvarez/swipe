@@ -1,0 +1,30 @@
+<!--
+Why do the templates for the base app have to be at base/templates/base?
+Django requires us to do that
+-->
+{% extends 'main.html' %} 
+<!-- display the content of this file on the content block of main.html-->
+
+{% block content %}
+
+<div>   
+
+    
+    <a href="{% url 'create-room' %}">New Room</a>
+    <p>{{room_count}} rooms found</p>
+    <div>
+        {% for room in rooms %}
+            <div>
+                <h5><a href="{% url 'room' room.id %}">{{room.name}}</a></h5>
+<!-- this finds the url with the name 'room' (3rd parameter of a path object in 
+     urls.py) and passes in the room.id value to the section <str:pk>-->
+                <p>@{{room.host.username}}</p>
+                <p>{{room.description}}</p>
+                <p>Last Activity {{room.updated|timesince}} ago</p>
+            </div> 
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}
