@@ -5,8 +5,9 @@
 <div>
     <form method="POST" action="">
         {% csrf_token %} <!-- this protects us from malicious code -->
-        {{form.as_p}} <!-- pass in our form from views.py and forms.py -->
-        <input type="submit" value="Submit"/>
+        <input type="text" name="name" placeholder="name">
+        <input type="text" name="description" placeholder="description">
+        <input type="submit" value="create"/>
     </form>
 </div>
 
