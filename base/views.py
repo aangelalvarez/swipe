@@ -144,7 +144,6 @@ def registerPage(request):
 def deleteMessage(request, pk):
     message = Message.objects.get(id=pk)
     room = message.room
-    context = {'room': room}
     if request.user != message.user:
         return HttpResponse('You are not allowed to delete this message')
 
