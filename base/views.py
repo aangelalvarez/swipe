@@ -39,13 +39,17 @@ def room(request, pk): # pass in the pk parameter of a room (id)
 def createRoom(request):
     page = 'create'
     if request.method == 'POST':
-        room = Room.objects.create(
-            name=request.POST.get('name'),
-            description=request.POST.get('description'),
-            host=request.user,
-        )
-        room.save()
-        return redirect('home')
+        if request.POST.get('name') != '':
+            room = Room.objects.create(
+                name=request.POST.get('name'),
+                description=request.POST.get('description'),
+                host=request.user,
+            )
+            room.save()
+            context = {'room': room}
+            return render(request, 'base/room.html', context)
+        else:
+            return render(request, 'base/room_form.html')
     return render(request, 'base/room_form.html')
 
 
