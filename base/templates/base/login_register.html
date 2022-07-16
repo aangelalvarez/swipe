@@ -6,9 +6,7 @@
 <div>
     <form method="POST">
         {% csrf_token %}
-        <label>Email</label>
-        <input type="text" name="username" placeholder="username"/>
-        <label>Password</label>
+        <input type="email" name="email" placeholder="email"/>
         <input type="password" name="password" placeholder="username"/>
         <input type="submit" value="Login" />
     </form>
@@ -21,7 +19,10 @@
 <div>
     <form method="POST">
         {% csrf_token %}
-        {{form.as_p}}
+        <input type="text" name="username" placeholder="username">
+        <input type="email" name="email" placeholder="email">
+        <input type="password" name="password" placeholder="password">
+        <input type="password" name="passwordConfirmation" placeholder="passwordConfirmation">        
         <input type="submit" value="Register" />
     </form>
 

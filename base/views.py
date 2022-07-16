@@ -91,16 +91,14 @@ def loginPage(request):
     if request.user.is_authenticated:
         return redirect('home')
     if request.method == "POST":
-        username = request.POST.get('username').lower()
+        email = request.POST.get('email')
         password = request.POST.get('password')
         try:
-            user = User.objects.get(username=username)
+            user = User.objects.get(email=email)
         except:
             messages.error(request, 'User does not exist')
         
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
+        if email == user.email and password == user.password:
             login(request, user)
             return redirect('home')
         else:
@@ -114,21 +112,22 @@ def logoutUser(request):
     return redirect('home')
 
 def registerPage(request):
-    form = UserCreationForm()
-    context = {'form': form}
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False) 
-            # commit lets us get the user object right away and modify it before
-            # actually sending it to the database
-            user.username = user.username.lower()
-            user.save()
-            login(request, user) # login user right away
-            return redirect('home')
+        if request.POST.get('username') != None and request.POST.get('password') != None and request.POST.get('passwordConfirmation') != None:
+            if request.POST.get('password') == request.POST.get('passwordConfirmation'):
+                user = User.objects.create(
+                    username = request.POST.get('username'),
+                    password = request.POST.get('password'),
+                    email = request.POST.get('email'),
+                ) 
+                    
+                login(request, user) # login user right away
+                return redirect('home')
+            else:
+                messages.error(request, 'Passwords do not match')
         else:
             messages.error(request, 'Error registering')
-
+    context = {}
     return render(request, 'base/login_register.html', context)
 
 @login_required(login_url='login')
