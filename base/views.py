@@ -37,13 +37,14 @@ def room(request, pk): # pass in the pk parameter of a room (id)
 # don't let the user create rooms unless he is logged id, redirect them to login page
 @login_required(login_url='login')
 def createRoom(request):
+    page = 'create'
     if request.method == 'POST':
         room = Room.objects.create(
             name=request.POST.get('name'),
-            host=request.user,
             description=request.POST.get('description'),
+            host=request.user,
         )
-        room.save() # save it to the database
+        room.save()
         return redirect('home')
     return render(request, 'base/room_form.html')
 
