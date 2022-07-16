@@ -19,7 +19,16 @@ def home(request):
 def room(request, pk): # pass in the pk parameter of a room (id)
     room = Room.objects.get(id=pk) # get a specific room from the database        
     room_messages = room.message_set.all().order_by('-created') # get all messages on this room
-
+    if request.method == 'POST':
+            if request.POST.get('body') != None:
+                message = Message.objects.create(
+                    user=request.user,
+                    room=room,
+                    body=request.POST.get('body'),
+                )
+                context = {'room': room, 'room_messages': room_messages}
+                room.save() # Update the room for activity
+                return render(request, 'base/room.html', context)
     context = {'room': room, 'room_messages': room_messages}
     return render(request, 'base/room.html', context)
 
@@ -68,6 +77,7 @@ def updateRoom(request, pk):
                     room=room,
                     body=request.POST.get('body'),
                 )
+                room.save() #Update room for activity
                 context = {'room': room, 'room_messages': room_messages}
                 return render(request, 'base/room.html', context)
 
