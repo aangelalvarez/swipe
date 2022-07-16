@@ -37,7 +37,7 @@ def room(request, pk): # pass in the pk parameter of a room (id)
 # don't let the user create rooms unless he is logged id, redirect them to login page
 @login_required(login_url='login')
 def createRoom(request):
-    page = 'create'
+    
     if request.method == 'POST':
         if request.POST.get('name') != '':
             room = Room.objects.create(
@@ -50,25 +50,25 @@ def createRoom(request):
             return render(request, 'base/room.html', context)
         else:
             return render(request, 'base/room_form.html')
-    return render(request, 'base/room_form.html')
+    room = {'name': '', 'description':''}
+    context = {'room':room}
+    return render(request, 'base/room_form.html', context)
 
 
 # don't let the user create rooms unless he is logged id, redirect them to login page
 @login_required(login_url='login')
 def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
-    form = RoomForm(instance=room) # Fill out the form with the room data
-
+    context = {'room':room}
     if request.user != room.host:
         return HttpResponse('You are not allowed to edit this room')
 
-    if request.method == 'POST':
-        form = RoomForm(request.POST, instance=room)
-        if form.is_valid():
-            form.save()
-            context = {'room': room}
-            return render(request, 'base/room.html', context)
-    context = {'form': form}
+    if request.method == 'POST' and request.POST.get('name') != '':
+        room.name = request.POST.get('name')
+        room.description = request.POST.get('description')
+        room.save()
+        return render(request, 'base/room.html', context)
+    
     return render(request, 'base/room_form.html', context)
 
 # don't let the user create rooms unless he is logged id, redirect them to login page
