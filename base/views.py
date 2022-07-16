@@ -1,13 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Room, Message
-from .forms import RoomForm
 from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.contrib.auth.forms import UserCreationForm
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
@@ -22,22 +20,12 @@ def room(request, pk): # pass in the pk parameter of a room (id)
     room = Room.objects.get(id=pk) # get a specific room from the database        
     room_messages = room.message_set.all().order_by('-created') # get all messages on this room
 
-    if request.method == 'POST':
-        if len(request.POST.get('body')) != 0:
-            message = Message.objects.create(
-                user=request.user,
-                room=room,
-                body=request.POST.get('body'),
-            )
-            return redirect('room', pk=room.id)
-
     context = {'room': room, 'room_messages': room_messages}
     return render(request, 'base/room.html', context)
 
 # don't let the user create rooms unless he is logged id, redirect them to login page
 @login_required(login_url='login')
 def createRoom(request):
-    
     if request.method == 'POST':
         if request.POST.get('name') != '':
             room = Room.objects.create(
@@ -59,16 +47,30 @@ def createRoom(request):
 @login_required(login_url='login')
 def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
-    context = {'room':room}
+    room_messages = room.message_set.all().order_by('-created')
+    context = {'room':room, 'room_messages': room_messages}
     if request.user != room.host:
         return HttpResponse('You are not allowed to edit this room')
 
-    if request.method == 'POST' and request.POST.get('name') != '':
+    # Update room
+    if request.method == 'POST' and request.POST.get('name') != None and request.POST.get('name') != '': 
         room.name = request.POST.get('name')
         room.description = request.POST.get('description')
-        room.save()
+        print(room.name)
+        room.save(update_fields=['name', 'description'])
         return render(request, 'base/room.html', context)
-    
+
+    elif request.method == 'POST' and request.POST.get('body') != None and request.POST.get('body') != '':
+        if request.method == 'POST':
+            if request.POST.get('body') != None:
+                message = Message.objects.create(
+                    user=request.user,
+                    room=room,
+                    body=request.POST.get('body'),
+                )
+                context = {'room': room, 'room_messages': room_messages}
+                return render(request, 'base/room.html', context)
+
     return render(request, 'base/room_form.html', context)
 
 # don't let the user create rooms unless he is logged id, redirect them to login page

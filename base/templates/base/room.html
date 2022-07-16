@@ -27,7 +27,7 @@
 
 {% if request.user.is_authenticated %}
 <div>
-    <form method="POST" action="">
+    <form method="POST">
         {% csrf_token %}
         <input type="text" name="body" placeholder="New Message"/>
         <input type="submit" value="send">
