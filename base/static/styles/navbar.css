@@ -1,0 +1,100 @@
+.logo, .searchContainer, .search {
+    width: fit-content;
+    margin:0 ;
+    display:block;
+    color:rgb(202, 255, 228);
+}
+
+.logo {
+    letter-spacing: 8px;
+}
+
+.logoContainer {
+    width: fit-content;
+    margin:20px;
+    display:block;
+    position: absolute;
+}
+
+.searchContainer {
+    position: absolute;
+    margin: 25px;
+    margin-right: 250px;
+    right: 0;
+}
+
+.search {
+    height: 30px;
+    font-size: 15px;
+    border-radius: 4px;
+    width: 65%;
+    background-color: rgb(58, 58, 58);
+    padding: 0 10px;
+}
+
+::placeholder {
+    color: white;
+}
+
+.search:focus {
+    outline:none;
+    filter:brightness(125%)
+}
+
+
+.searchButton {
+    height: 30px;
+    font-size: 15px;
+    border-radius: 4px;
+    background-color: rgb(0, 142, 161);
+    width: 30%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: 0.15s;
+}
+
+.searchButton:hover {
+    cursor: pointer;
+}
+
+.username {
+    position: absolute;
+    margin: 28px;
+    font-size: 20px;
+    right: 0;
+    margin-right: 110px;
+    color: rgb(202, 255, 228);
+    letter-spacing: 2px;
+}
+
+.login, .logout {
+    position: absolute;
+    transition: 0.15s;
+    margin: 24px;
+    padding: 6px;
+    border-radius: 5px;
+    right: 0;
+    color: white;
+}
+
+.logout {
+    background-color: rgb(202, 0, 0);
+}
+
+.logout:hover, .login:hover, .searchButton:hover {
+    filter:brightness(125%);
+}
+
+.login {
+    background-color: rgb(0, 161, 13);
+}
+
+.navbarContainer {
+    width: 100%;
+    height: 80px;
+    position:sticky;
+    top: 0;
+    border-bottom: 1px solid rgb(202, 255, 228);
+}
+
