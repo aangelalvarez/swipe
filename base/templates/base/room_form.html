@@ -2,13 +2,15 @@
 
 {% block content %}
 
-<div>
-    <form method="POST">
-        {% csrf_token %} <!-- this protects us from malicious code -->
-        <input type="text" name="name" value="{{ room.name }}" placeholder="name"/>
-        <input type="text" name="description" value="{{ room.description }}" placeholder="description"/>
-        <input type="submit" value="submit"/>
-    </form>
+<div class="loginRegisterContainer">
+    <div class="loginFormContainer">
+        <form class="loginRegisterForm" method="POST">
+            {% csrf_token %} <!-- this protects us from malicious code -->
+            <input class="loginRegisterInput" type="text" name="name" value="{{ room.name }}" placeholder="name"/>
+            <input class="loginRegisterInput" type="text" name="description" value="{{ room.description }}" placeholder="description"/>
+            <input class="loginRegisterButton" type="submit" value="submit"/>
+        </form>
+    </div>
 </div>
 
 {% endblock content %}

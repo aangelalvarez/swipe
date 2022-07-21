@@ -7,8 +7,8 @@
     <div class="loginFormContainer">
         <form class="loginRegisterForm" method="POST">
             {% csrf_token %}
-            <input class="loginRegisterInput"type="password" name="password" placeholder="username"/>
             <input class="loginRegisterInput"type="email" name="email" placeholder="email"/>
+            <input class="loginRegisterInput"type="password" name="password" placeholder="username"/>
             <input class="loginRegisterButton" type="submit" value="Log In" />
         </form>
     
