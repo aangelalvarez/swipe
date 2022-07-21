@@ -1,0 +1,134 @@
+.roomContainer {
+    max-width: 1200px;
+    margin:auto;
+    text-align: center;
+}
+
+
+.rName {
+    font-size: 35px;
+    color:rgb(255, 255, 255);
+    font-family: 'Ubuntu';
+    transition: 0.2s;
+    display: inline-block;
+}
+
+.roomInfo {
+    padding: 0;
+}
+
+.rID {
+    font-size: 18px;
+    margin: 5px;
+}
+
+.rHost {
+    font-size: 22px;
+    margin: 5px;
+}
+
+.marginContainer {
+    margin: 20px;
+    border: 1px solid rgb(145, 145, 145);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+}
+
+.edit, .delete {
+    right: 0;
+    padding: 6px;
+    transition: 0.15s;
+    border-radius: 5px;
+    right: 0;
+    color: white;
+    border: 1px solid white;
+    display: inline-block;
+    width: 100px;
+}
+
+.delete {
+    margin-left: 20px;
+    background-color: rgb(202, 0, 0);
+}
+
+.edit {
+    background-color: rgb(0, 161, 13);
+}
+
+.edit:hover, .delete:hover {
+    filter:brightness(125%);
+}
+
+.updateDeleteRoom{
+    margin: 10px 0;
+}
+
+.messageFormContainer {
+    margin:10px 0;
+    position:sticky;
+    bottom:10px;
+}
+
+.messageForm {
+    background-color: #1d2a35;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 50vw;
+}
+
+.messageForm:focus {
+    outline:none;
+    border: 1px solid white;
+}
+
+.messageForm::placeholder {
+    font-size: 16px;
+}
+
+.sendMessageButton {
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #1d2a35;
+    transition: 0.2s;
+    font-size: 16px;
+}
+
+.sendMessageButton:hover {
+    cursor:pointer;
+    border: 1px solid white
+}
+
+.messagesContainer {
+    padding: 0 20px;
+    border:1px solid rgb(145, 145, 145);
+    background-color: #1d2a35;
+    border-radius: 10px;
+}
+
+.messageContainer {
+    border:1px solid rgb(145, 145, 145);
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.message {
+    color: rgb(200, 200, 200);
+    font-size: 18px;
+    margin: 5px 30px;
+}
+
+.messageHost {
+    font-size: 18px;
+    margin: 5px;
+    color:rgb(133, 221, 255);
+}
+
+.created {
+    font-size: 14px;
+    margin: 5px;
+}

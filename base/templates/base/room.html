@@ -2,37 +2,46 @@
 <!-- display the content of this file on the content block of main.html-->
 
 {% block content %}
-
-<h1>{{room.name}}</h1>
-<h3>ID {{room.id}}</h3>
-<h4>Host @{{room.host.username}}</h4>
-{% if request.user == room.host %}
-<a href="{% url 'update-room' room.id %}">Edit</a>
-<a href="{% url 'delete-room' room.id %}">Delete</a>
-{% endif %}
-<p>{{room.description}}</p>
-
-<div>
-    {% for message in room_messages %}
-        <div>
-            <p>@{{message.user}} {{message.created|timesince}} ago</p>
-            {% if request.user == message.user %}
-                <a href="{% url 'delete-message' message.id %}">Delete</a>
-            {% endif %}
-            <!--timesince gives us the time since that message was created-->
-            <p>{{message.body}}</p>
+<div class="roomContainer">
+    <div class = "marginContainer">
+        <h1 class="rName">{{room.name}}</h1>
+        <diV class="roomInfo">
+            <h3 class="rID">ID {{room.id}}</h3>
+            <h4 class="rHost">Host @{{room.host.username}}</h4>
+        </div>     
+        <p class="roomDescription">{{room.description}}</p>
+        {% if request.user == room.host %}
+        <div class="updateDeleteRoom">
+            <a class="edit" href="{% url 'update-room' room.id %}">Edit</a>
+            <a class="delete" href="{% url 'delete-room' room.id %}">Delete</a>
         </div>
-    {% endfor %}
-</div>
+        {% endif %}
 
-{% if request.user.is_authenticated %}
-<div>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="body" placeholder="New Message"/>
-        <input type="submit" value="send">
-    </form>
+        <div class="messagesContainer">
+            {% for message in room_messages %}
+                <div class="messageContainer">
+                    <p class="messageHost">@{{message.user}}</p>
+                    <p class="message">{{message.body}}</p>
+                    <p class="created">{{message.created|timesince}} ago</p>
+                    {% if request.user == message.user %}
+                        <a class="delete" style="margin-left:0 ;width: 80px; margin-bottom: 10px;" href="{% url 'delete-message' message.id %}">Delete</a>
+                    {% endif %}
+                    <!--timesince gives us the time since that message was created-->
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if request.user.is_authenticated %}
+        <div class="messageFormContainer">
+            <form method="POST">
+                {% csrf_token %}
+                <input class="messageForm" type="text" name="body" placeholder="New Message"/>
+                <input class="sendMessageButton" style="margin-left: 0;" type="submit" value="send">
+            </form>
+        </div>
+        {% endif %}
+
+    </div>
 </div>
-{% endif %}
 
 {% endblock content %}

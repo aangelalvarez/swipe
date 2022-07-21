@@ -22,13 +22,14 @@
 
 .newRoomButton:hover {
     background-color: rgb(29, 140, 155);
+    cursor:pointer;
 }
 
 .roomCount {
     margin:10px 0;
     padding: 20px; 
     vertical-align: middle;
-    color: rgb(255, 255, 255);
+    color: white;
     font-size: 20px;
 }
 
@@ -43,7 +44,7 @@
     padding: 10px;
     border-radius: 8px;
     margin-bottom: 20px;
-    background-color: rgb(50, 50, 50);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .roomName {
@@ -52,6 +53,7 @@
     font-family: 'Ubuntu';
     transition: 0.2s;
 }
+
 
 .centerText {
     text-align: center;
@@ -62,15 +64,18 @@
 }
 
 .roomHost {
-    font-size: 12px;
-    color: rgb(124, 115, 255);
+    font-size: 18px;
+    margin: 5px;
+    color:rgb(133, 221, 255);
 }
 
 .roomDescription {
-    font-size: 16px;
-    color: rgb(170, 170, 170);
+    color: rgb(200, 200, 200);
+    font-size: 18px;
+    margin: 5px 30px;
 }
 
 .roomActivity {
-
+    font-size: 14px;
+    margin: 0;
 }

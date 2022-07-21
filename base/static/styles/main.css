@@ -1,7 +1,8 @@
 body, html {
     margin: 0;
     padding: 0;
-    background-color: rgb(25, 25, 25);
+    background-color: #1d2a35;
+    min-height: 100%;
 }
 
 * {

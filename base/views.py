@@ -20,7 +20,7 @@ def room(request, pk): # pass in the pk parameter of a room (id)
     room = Room.objects.get(id=pk) # get a specific room from the database        
     room_messages = room.message_set.all().order_by('-created') # get all messages on this room
     if request.method == 'POST':
-            if request.POST.get('body') != None:
+            if request.POST.get('body') != None and request.POST.get('body') != '':
                 message = Message.objects.create(
                     user=request.user,
                     room=room,
@@ -71,7 +71,7 @@ def updateRoom(request, pk):
 
     elif request.method == 'POST' and request.POST.get('body') != None and request.POST.get('body') != '':
         if request.method == 'POST':
-            if request.POST.get('body') != None:
+            if request.POST.get('body') != '':
                 message = Message.objects.create(
                     user=request.user,
                     room=room,
