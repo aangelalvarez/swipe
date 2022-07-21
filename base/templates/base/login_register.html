@@ -2,34 +2,37 @@
 
 {% block content %}
 
-{% if page == 'login' %}
-<div>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="email" name="email" placeholder="email"/>
-        <input type="password" name="password" placeholder="username"/>
-        <input type="submit" value="Login" />
-    </form>
-
-    <p>Haven't signed up yet?</p>
-    <a href="{% url 'register' %}">Sign Up</a>
+<div class="loginRegisterContainer">
+    {% if page == 'login' %}
+    <div class="loginFormContainer">
+        <form class="loginRegisterForm" method="POST">
+            {% csrf_token %}
+            <input class="loginRegisterInput"type="password" name="password" placeholder="username"/>
+            <input class="loginRegisterInput"type="email" name="email" placeholder="email"/>
+            <input class="loginRegisterButton" type="submit" value="Log In" />
+        </form>
+    
+        <p>Haven't signed up yet?</p>
+        <a class="signupRegisterLink" href="{% url 'register' %}">Sign Up</a>
+    </div>
+    
+    {% else %}
+    <div class="registerFormContainer">
+        <form method="POST" class="loginRegisterForm">
+            {% csrf_token %}
+            <input class="loginRegisterInput" type="text" name="username" placeholder="username">
+            <input class="loginRegisterInput" type="email" name="email" placeholder="email">
+            <input class="loginRegisterInput" type="password" name="password" placeholder="password">
+            <input class="loginRegisterInput"type="password" name="passwordConfirmation" placeholder="confirm password">        
+            <input class="loginRegisterButton" type="submit" value="Register" />
+        </form>
+    
+        <p>Already have an account?</p>
+        <a class="signupRegisterLink" href="{% url 'login' %}">Log In</a>
+    </div>
+    
+    {% endif %}
 </div>
 
-{% else %}
-<div>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="username">
-        <input type="email" name="email" placeholder="email">
-        <input type="password" name="password" placeholder="password">
-        <input type="password" name="passwordConfirmation" placeholder="passwordConfirmation">        
-        <input type="submit" value="Register" />
-    </form>
-
-    <p>Already have an account?</p>
-    <a href="{% url 'login' %}">Log In</a>
-</div>
-
-{% endif %}
 
 {% endblock content %}
