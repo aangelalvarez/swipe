@@ -2,7 +2,7 @@
     width: fit-content;
     margin:0 ;
     display:block;
-    color:rgb(202, 255, 228);
+    color: white;
 }
 
 .logo {
@@ -28,17 +28,20 @@
     font-size: 15px;
     border-radius: 4px;
     width: 65%;
-    background-color: rgb(58, 58, 58);
     padding: 0 10px;
+    border: 1px solid rgb(145, 145, 145);
+    color: white;
+    background-color: rgb(25, 25, 25);
 }
 
 ::placeholder {
-    color: white;
+    color: rgb(255, 255, 255);
+    
 }
 
 .search:focus {
     outline:none;
-    filter:brightness(125%)
+    border: 1px solid white;
 }
 
 
@@ -46,12 +49,13 @@
     height: 30px;
     font-size: 15px;
     border-radius: 4px;
-    background-color: rgb(0, 142, 161);
+    border: 1px solid rgb(145, 145, 145);
     width: 30%;
     position: absolute;
     top: 0;
     right: 0;
     transition: 0.15s;
+    background-color: rgb(25, 25, 25);
 }
 
 .searchButton:hover {
@@ -64,7 +68,7 @@
     font-size: 20px;
     right: 0;
     margin-right: 110px;
-    color: rgb(202, 255, 228);
+    color: white;
     letter-spacing: 2px;
 }
 
@@ -76,6 +80,7 @@
     border-radius: 5px;
     right: 0;
     color: white;
+    border: 1px solid white;
 }
 
 .logout {
@@ -95,6 +100,7 @@
     height: 80px;
     position:sticky;
     top: 0;
-    border-bottom: 1px solid rgb(202, 255, 228);
+    border-bottom: 1px solid rgb(145, 145, 145);
+    background-color: rgb(50, 50, 50);
 }
 

@@ -1,6 +1,7 @@
 body, html {
     margin: 0;
     padding: 0;
+    background-color: rgb(25, 25, 25);
 }
 
 * {
@@ -8,7 +9,6 @@ body, html {
     border: none;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: white;
-    background-color: rgb(16, 30, 32);
 }
 
 a:link { text-decoration: none; }

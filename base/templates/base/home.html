@@ -7,18 +7,20 @@ Django requires us to do that
 
 {% block content %}
 
-<div>
-    <a href="{% url 'create-room' %}">New Room</a>
-    <p>{{room_count}} rooms found</p>
-    <div>
+<div class="homeContainer">
+    <p class="roomCount">
+        {{room_count}} rooms found     
+        <a class="newRoomButton" href="{% url 'create-room' %}">New Room</a>
+    </p>
+    <div class="roomList">
         {% for room in rooms %}
-            <div>
-                <h5><a href="{% url 'room' room.id %}">{{room.name}}</a></h5>
+            <div class="room">
+                <div class="centerText"><a class="roomName" href="{% url 'room' room.id %}">{{room.name}}</a></div>
 <!-- this finds the url with the name 'room' (3rd parameter of a path object in 
      urls.py) and passes in the room.id value to the section <str:pk>-->
-                <p>@{{room.host.username}}</p>
-                <p>{{room.description}}</p>
-                <p>Last Activity {{room.updated|timesince}} ago</p>
+                <div class="centerText"><p class="roomHost">@{{room.host.username}}</p></div>
+                <div class="centerText"><p class="roomDescription">{{room.description}}</p></div>
+                <p class="roomActivity">Last Activity {{room.updated|timesince}} ago</p>
             </div> 
         {% endfor %}
     </div>
