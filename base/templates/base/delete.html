@@ -1,12 +1,16 @@
 {% extends 'main.html' %}
 
 {% block content %}
+<div class="loginRegisterContainer">
+    <div class="loginFormContainer">
+        <form class="loginRegisterForm" method="POST" action="">
+            {% csrf_token %}
+            <p>Are you sure you want to delete "{{obj}}"?</p>
+            <a class="loginRegisterButton" href="{{request.META.HTTP_REFERER}}">Go Back</a>
+            <input class="delete" style="padding: 6px; font-size:16px;" type = "submit" value="Confirm" />
+        </form>
+    </div>
+</div>
 
-<form method="POST" action="">
-    {% csrf_token %}
-    <p>Are you sure you want to delete "{{obj}}"?</p>
-    <a href="{{request.META.HTTP_REFERER}}">Go Back</a>
-    <input type = "submit" value="Confirm" />
-</form>
 
 {% endblock content %}

@@ -60,6 +60,7 @@
 
 .edit:hover, .delete:hover {
     filter:brightness(125%);
+    cursor:pointer;
 }
 
 .updateDeleteRoom{
