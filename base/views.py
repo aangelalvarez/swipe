@@ -36,7 +36,7 @@ def room(request, pk): # pass in the pk parameter of a room (id)
 @login_required(login_url='login')
 def createRoom(request):
     if request.method == 'POST':
-        if request.POST.get('name') != '':
+        if request.POST.get('name') != None and request.POST.get('name') != '':
             room = Room.objects.create(
                 name=request.POST.get('name'),
                 description=request.POST.get('description'),
