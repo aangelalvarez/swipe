@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-v!%g^hvyu3(z=y76z*sizcizdr#*w%gl=v#c1a7#z-4(3!nbm*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['swipe-app.herokuapp.com', 'localhost']
 
 
 # Application definition
