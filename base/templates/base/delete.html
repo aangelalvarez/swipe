@@ -1,13 +1,13 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<div class="loginRegisterContainer">
-    <div class="loginFormContainer">
-        <form class="loginRegisterForm" method="POST" action="">
+<div class="mainFormContainer">
+    <div class="secondaryFormContainer">
+        <form class="form" method="POST" action="">
             {% csrf_token %}
             <p>Are you sure you want to delete "{{obj}}"?</p>
-            <a class="loginRegisterButton" href="{{request.META.HTTP_REFERER}}">Go Back</a>
-            <input class="delete" style="padding: 6px; font-size:16px;" type = "submit" value="Confirm" />
+            <a class="formButton" href="{{request.META.HTTP_REFERER}}">Go Back</a>
+            <input class="delete" style="padding: 6px; font-size:16px;" type = "submit" value="Delete" />
         </form>
     </div>
 </div>

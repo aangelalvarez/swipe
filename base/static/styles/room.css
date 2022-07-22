@@ -1,5 +1,4 @@
 .roomContainer {
-    max-width: 1200px;
     margin:auto;
     text-align: center;
 }
@@ -28,13 +27,10 @@
 }
 
 .marginContainer {
-    margin: 20px;
-    border: 1px solid rgb(145, 145, 145);
-    padding: 10px;
-    border-radius: 8px;
-    margin-top: 10px;
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 20px;
+    margin: 0;
+    border: none;
+    padding: 0;
 }
 
 .edit, .delete {
@@ -68,9 +64,10 @@
 }
 
 .messageFormContainer {
-    margin:10px 0;
+    margin: 0;
     position:sticky;
     bottom:10px;
+    padding-top:20px;
 }
 
 .messageForm {
@@ -104,16 +101,21 @@
 }
 
 .messagesContainer {
-    padding: 0 20px;
-    border:1px solid rgb(145, 145, 145);
-    background-color: #1d2a35;
-    border-radius: 10px;
+    padding:20px;
+    background-color: hsl(208, 29%, 16%);
+    border-radius: 0;
+    margin-top: 20px;
+    border-top: 1px solid rgb(145, 145, 145);
+    border-bottom: 1px solid rgb(145, 145, 145);
 }
 
 .messageContainer {
+    max-width: 800px;
     border:1px solid rgb(145, 145, 145);
     background-color: rgba(255, 255, 255, 0.1);
-    margin: 20px 0;
+    margin:auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     border-radius: 8px;
 }
 
@@ -121,6 +123,7 @@
     color: rgb(200, 200, 200);
     font-size: 18px;
     margin: 5px 30px;
+    overflow-x:auto;
 }
 
 .messageHost {
@@ -132,4 +135,22 @@
 .created {
     font-size: 14px;
     margin: 5px;
+}
+
+.rDescription {
+    overflow-x: scroll;
+}
+@media screen and (max-width: 728px) {
+    .delete, .edit {
+        width: 60px;
+        margin: 10px 0;
+    }
+
+    .delete {
+        margin-left: 0 !important;
+    }
+
+    .rName {
+        margin: 5px;
+    }
 }

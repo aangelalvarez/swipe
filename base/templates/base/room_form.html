@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<div class="loginRegisterContainer">
-    <div class="loginFormContainer">
-        <form class="loginRegisterForm" method="POST">
+<div class="mainFormContainer">
+    <div class="secondaryFormContainer">
+        <form class="form" method="POST">
             {% csrf_token %} <!-- this protects us from malicious code -->
-            <input class="loginRegisterInput" type="text" name="name" value="{{ room.name }}" placeholder="name"/>
-            <input class="loginRegisterInput" type="text" name="description" value="{{ room.description }}" placeholder="description"/>
-            <input class="loginRegisterButton" type="submit" value="submit"/>
+            <input class="formInput" type="text" name="name" value="{{ room.name }}" placeholder="name"/>
+            <input class="formInput" type="text" name="description" value="{{ room.description }}" placeholder="description"/>
+            <input class="formButton" type="submit" value="submit"/>
         </form>
     </div>
 </div>

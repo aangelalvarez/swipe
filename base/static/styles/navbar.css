@@ -104,3 +104,49 @@
     background-color: #10181f;
 }
 
+@media  screen and (max-width:728px) {
+    .logoContainer{
+        position:absolute;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .navbarContainer {
+        text-align: center;
+        height: 140px;
+        padding: 10px 0;
+    }
+
+    .logo {
+        margin: auto;
+    }
+
+    .searchContainer {
+        width: 100%;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    .search {
+        width: 90%;
+        margin: auto;
+    }
+
+    .searchButton {
+        width: 30%;
+        margin:auto;
+        margin-top: 35px;
+        margin-left: 35%;
+        margin-right:35%;
+    }
+
+    .login, .logout {
+        position: absolute;
+        width: 35%;
+        margin: 88px 32.5% 0 32.5%;
+    }
+
+    .username, .searchButton {display: none;}
+
+}

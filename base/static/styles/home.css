@@ -73,9 +73,27 @@
     color: rgb(200, 200, 200);
     font-size: 18px;
     margin: 5px 30px;
+    overflow-x: scroll;
 }
 
 .roomActivity {
     font-size: 14px;
     margin: 0;
+}
+
+@media  screen and (max-width: 728px) {
+    .roomCount, .newRoomButton, .homeContainer {
+        text-align: center;
+    }
+
+    .newRoomButton {
+        padding: 5px;
+        margin: 10px 0;
+        font-size: 14px;
+    }
+
+    .roomCount {
+        font-size: 14px;
+        padding:0;
+    }
 }

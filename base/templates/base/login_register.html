@@ -2,14 +2,14 @@
 
 {% block content %}
 
-<div class="loginRegisterContainer">
+<div class="mainFormContainer">
     {% if page == 'login' %}
-    <div class="loginFormContainer">
-        <form class="loginRegisterForm" method="POST">
+    <div class="secondaryFormContainer">
+        <form class="form" method="POST">
             {% csrf_token %}
-            <input class="loginRegisterInput"type="email" name="email" placeholder="email"/>
-            <input class="loginRegisterInput"type="password" name="password" placeholder="username"/>
-            <input class="loginRegisterButton" type="submit" value="Log In" />
+            <input class="formInput"type="email" name="email" placeholder="email"/>
+            <input class="formInput"type="password" name="password" placeholder="username"/>
+            <input class="formButton" type="submit" value="Log In" />
         </form>
     
         <p>Haven't signed up yet?</p>
@@ -18,13 +18,13 @@
     
     {% else %}
     <div class="registerFormContainer">
-        <form method="POST" class="loginRegisterForm">
+        <form method="POST" class="form">
             {% csrf_token %}
-            <input class="loginRegisterInput" type="text" name="username" placeholder="username">
-            <input class="loginRegisterInput" type="email" name="email" placeholder="email">
-            <input class="loginRegisterInput" type="password" name="password" placeholder="password">
-            <input class="loginRegisterInput"type="password" name="passwordConfirmation" placeholder="confirm password">        
-            <input class="loginRegisterButton" type="submit" value="Register" />
+            <input class="formInput" type="text" name="username" placeholder="username">
+            <input class="formInput" type="email" name="email" placeholder="email">
+            <input class="formInput" type="password" name="password" placeholder="password">
+            <input class="formInput"type="password" name="passwordConfirmation" placeholder="confirm password">        
+            <input class="formButton" type="submit" value="Register" />
         </form>
     
         <p>Already have an account?</p>
