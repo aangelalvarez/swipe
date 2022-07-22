@@ -73,7 +73,7 @@
     color: rgb(200, 200, 200);
     font-size: 18px;
     margin: 5px 30px;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 .roomActivity {
