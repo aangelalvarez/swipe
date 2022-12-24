@@ -36,7 +36,7 @@ def room(request, pk): # pass in the pk parameter of a room (id)
 @login_required(login_url='login')
 def createRoom(request):
     if request.method == 'POST':
-        if request.POST.get('name') != None and request.POST.get('name') != '':
+        if request.POST.get('name') != '':
             room = Room.objects.create(
                 name=request.POST.get('name'),
                 description=request.POST.get('description'),
@@ -105,14 +105,15 @@ def loginPage(request):
         password = request.POST.get('password')
         try:
             user = User.objects.get(email=email)
+            if email == user.email and password == user.password:
+                login(request, user)
+                return redirect('home')
+            else:
+                messages.error(request, "incorrect username or password")
         except:
             messages.error(request, 'User does not exist')
         
-        if email == user.email and password == user.password:
-            login(request, user)
-            return redirect('home')
-        else:
-            messages.error(request, "incorrect username or password")
+        
 
     context={'page': page}
     return render(request, 'base/login_register.html', context)
@@ -125,14 +126,20 @@ def registerPage(request):
     if request.method == 'POST':
         if request.POST.get('username') != None and request.POST.get('password') != None and request.POST.get('passwordConfirmation') != None:
             if request.POST.get('password') == request.POST.get('passwordConfirmation'):
-                user = User.objects.create(
+                try:
+                    user = User.objects.create(
                     username = request.POST.get('username'),
                     password = request.POST.get('password'),
                     email = request.POST.get('email'),
                 ) 
                     
-                login(request, user) # login user right away
-                return redirect('home')
+                    login(request, user) # login user right away
+                    return redirect('home')
+                except:
+                    messages.error(request, "Username already taken")
+                
+
+                
             else:
                 messages.error(request, 'Passwords do not match')
         else:
